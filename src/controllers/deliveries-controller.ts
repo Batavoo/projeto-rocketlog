@@ -22,6 +22,11 @@ class DeliveriesController {
       .status(201)
       .json({ message: "Delivery created successfully" });
   }
+
+  async index(request: Request, response: Response) {
+    const deliveries = await prisma.delivery.findMany();
+    return response.json(deliveries);
+  }
 }
 
 export { DeliveriesController };

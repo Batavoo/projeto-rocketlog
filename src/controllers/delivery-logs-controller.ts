@@ -20,6 +20,12 @@ class DeliveryLogsController {
       throw new AppError("Delivery not found", 404);
     }
 
+    if (delivery.status === "delivered") {
+      throw new AppError(
+        "Cannot add log to a delivery that has already been delivered"
+      );
+    }
+
     if (delivery.status === "processing") {
       throw new AppError(
         "Cannot add log to a delivery that is still processing"

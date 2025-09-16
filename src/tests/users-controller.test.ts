@@ -15,7 +15,7 @@ describe("UsersController", () => {
     const response = await request(app).post("/users").send({
       name: "Test User",
       email: "testuser@example.com",
-      password: "Gu@99488871",
+      password: "Gu@12345678",
     });
 
     expect(response.status).toBe(201);
@@ -29,7 +29,7 @@ describe("UsersController", () => {
     const response = await request(app).post("/users").send({
       name: "Duplicate User",
       email: "testuser@example.com",
-      password: "Gu@99488871",
+      password: "Gu@12345678",
     });
 
     expect(response.status).toBe(400);
@@ -40,7 +40,7 @@ describe("UsersController", () => {
     const response = await request(app).post("/users").send({
       name: "Test User",
       email: "invalid-email",
-      password: "Gu@99488871",
+      password: "Gu@12345678",
     });
 
     expect(response.body.message).toBe("validation error");
